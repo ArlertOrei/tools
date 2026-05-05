@@ -1,0 +1,14 @@
+nmap -sn <target-ip>
+nmap -sCV -p 22,80,443 <target-ip> -oN nmap.txt
+
+curl -I http://<target-ip>
+
+Directory & vhost brute-force
+ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt -u http://<target>/FUZZ -mc 200,301,302
+ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Host: FUZZ.target.htb" -u http://<target>
+
+Pipe para httpx
+cat hosts.txt | httpx -silent -o live.txt
+
+Nuclei
+nuclei -l live.txt -t cves/ -t misconfigurations/ -t exposures/ -severity medium,high,critical -o nuclei-out.txt
