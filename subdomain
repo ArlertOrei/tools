@@ -1,0 +1,4 @@
+dnsrecon -t brt -d domain.com
+// bruteforce
+./sublist3r.py -d domain.com
+// osint
