@@ -2,3 +2,4 @@ dnsrecon -t brt -d domain.com
 // bruteforce
 ./sublist3r.py -d domain.com
 // osint
+ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Host: FUZZ.target.htb" -u http://<target>
